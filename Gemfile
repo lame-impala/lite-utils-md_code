@@ -2,8 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'markly'
-gem 'lite-data'
+gemspec
 
 group :test do
   gem 'byebug', '~> 11'

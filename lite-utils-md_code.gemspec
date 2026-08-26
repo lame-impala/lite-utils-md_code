@@ -7,10 +7,12 @@ Gem::Specification.new do |spec|
   spec.version = Lite::Utils::MdCode::VERSION
   spec.authors = ['Tomas Milsimer']
   spec.email = ['tomas.milsimer@protonmail.com']
+  spec.homepage = 'https://github.com/lame-impala/lite-utils-md_code'
 
   spec.summary = 'Connects a MD file to your code through MD fencing'
   spec.description = <<~DESC
-     TODO
+    Extracts runnable code inside MD fences, tagged with an identifier,
+    so you can `eval` them from your test suite.
   DESC
 
   spec.required_ruby_version = '>= 3.0.0'
@@ -19,10 +21,14 @@ Gem::Specification.new do |spec|
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject do |f|
-      (f == __FILE__) || f.match(%r{\A(?:(?:test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
+      (f == __FILE__) || f.match(%r{\A(?:(?:test|spec|features)/|\.(?:git|github|travis|circleci)|appveyor)})
     end
   end
   spec.require_paths = ['lib']
   spec.licenses = ['MIT']
   spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
+
+  spec.add_dependency 'lite-data'
+  spec.add_dependency 'markly'
 end
